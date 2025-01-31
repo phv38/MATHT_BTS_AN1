@@ -36,36 +36,44 @@
 
 
 
-#compteur de chaine
-def Comparaisonchaine(chaine1,chaine2):
-    if(chaine1==chaine2):
-        return True
-    else:
-        return False
+# Compare deux chaînes
+def Comparaisonchaine(chaine1, chaine2):
+    return chaine1 == chaine2
 
+# Chaîne1 original
 def chaine1():
-    chaine=1234
+    chaine = "1234"
+    return chaine
 
+# Chaîne2 rentré pour login
 def chaine2():
-    chaine=4321
+    chaine = input("Rentrer un code: ")
+    return chaine
 
-def vérifcara(chaine1):
-    if(len(chaine1)==4):
-        return True
-    else:
-        return False
+# Vérifie la taille du code rentré
+def vérifcara(chaine):
+    return len(chaine) == 4
 
-def verifchiffre(chaine1,bibli):
-    for i in range(chaine1):
-        if(i not in bibli):
+# Vérifie si le code rentré est bien composé de chiffres
+def verifchiffre(chaine, bibli):
+    for i in chaine:
+        if int(i) not in bibli:
             return False
-    return True        
+    return True
 
-
-
+# Définir les chiffres autorisés pour def verifchiffre
 def bibli():
-    bilbio=[0,1,2,3,4,5,6,7,8,9]
+    return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-
-
-
+# Exemple d'utilisation du programme
+if __name__ == "__main__":
+    original = chaine1()
+    login = chaine2()
+    
+    if vérifcara(login) and verifchiffre(login, bibli()):
+        if Comparaisonchaine(original, login):
+            print("Codes correspondants")
+        else:
+            print("Codes non correspondants")
+    else:
+        print("Code invalide")
